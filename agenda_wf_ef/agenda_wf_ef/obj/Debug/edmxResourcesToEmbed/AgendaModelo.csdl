@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AgendaModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="AgendaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Contatos" EntityType="AgendaModel.Contatos" />
+    <EntitySet Name="Usuarios" EntityType="AgendaModel.Usuarios" />
+    <AssociationSet Name="fk_contatos" Association="AgendaModel.fk_contatos">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Contatos" EntitySet="Contatos" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Contatos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UsuarioId" Type="Int32" />
+    <Property Name="Nome" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="Cpf" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+    <Property Name="Telefone" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+    <Property Name="Email" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="Site" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Usuarios" Relationship="AgendaModel.fk_contatos" FromRole="Contatos" ToRole="Usuarios" />
+  </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nome" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="Email" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="Senha" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Contatos" Relationship="AgendaModel.fk_contatos" FromRole="Usuarios" ToRole="Contatos" />
+  </EntityType>
+  <Association Name="fk_contatos">
+    <End Role="Usuarios" Type="AgendaModel.Usuarios" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Contatos" Type="AgendaModel.Contatos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Contatos">
+        <PropertyRef Name="UsuarioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

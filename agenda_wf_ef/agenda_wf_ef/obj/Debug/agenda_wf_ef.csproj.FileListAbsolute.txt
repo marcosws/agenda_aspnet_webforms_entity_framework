@@ -1,0 +1,5 @@
+C:\agenda_aspnet_webforms_entity_framework\agenda_wf_ef\agenda_wf_ef\bin\agenda_wf_ef.dll
+C:\agenda_aspnet_webforms_entity_framework\agenda_wf_ef\agenda_wf_ef\bin\agenda_wf_ef.pdb
+C:\agenda_aspnet_webforms_entity_framework\agenda_wf_ef\agenda_wf_ef\obj\Debug\agenda_wf_ef.csprojResolveAssemblyReference.cache
+C:\agenda_aspnet_webforms_entity_framework\agenda_wf_ef\agenda_wf_ef\obj\Debug\agenda_wf_ef.dll
+C:\agenda_aspnet_webforms_entity_framework\agenda_wf_ef\agenda_wf_ef\obj\Debug\agenda_wf_ef.pdb
